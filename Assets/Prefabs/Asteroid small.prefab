@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162800846036822, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_Name
-      value: Asteroid
+      value: Asteroid small
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.12
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.12
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.12
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -75,21 +75,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1162800846036822, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
   m_PrefabInstance: {fileID: 1612766644324742105}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5161473962573304707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613857912219528335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf6d9a41b120754bbe8b53f9016f829, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  rotationRate: 20
-  explosion: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}
 --- !u!135 &4511344315256569722
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -103,3 +88,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 124.46943
   m_Center: {x: -0.12392807, y: 0.21832275, z: -0.06703949}
+--- !u!114 &5161473962573304707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613857912219528335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf6d9a41b120754bbe8b53f9016f829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40
+  rotationRate: 55
+  explosion: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}

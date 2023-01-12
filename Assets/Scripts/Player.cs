@@ -38,8 +38,6 @@ public class Player : MonoBehaviour{
 
         if (Input.GetButtonDown("Fire1")){
 
-            Debug.Log("pew pew!");
-
             //GetComponent<AudioSource>().Play();
 
             GameObject go = Instantiate(prefab, bulletSpawnlocation.position, bulletSpawnlocation.rotation);
