@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162800846036822, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_Name
-      value: Asteroid small
+      value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162800846036822, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +21,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.07
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.07
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.07
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4709175766510056, guid: a6e721628aa196b4a8029e306a37b7f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,7 +87,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613857912219528335}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 124.46943
@@ -100,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf6d9a41b120754bbe8b53f9016f829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  rotationRate: 55
+  speed: 20
+  rotationRate: 20
   explosion: {fileID: 1290715649332758, guid: 587eaecaa621be74486f351c78b4f0a8, type: 3}

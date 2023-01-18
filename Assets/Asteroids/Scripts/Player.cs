@@ -46,9 +46,17 @@ public class Player : MonoBehaviour{
 
     }
 
-    private void Awake(){
+	private void OnTriggerEnter(Collider other){
 
-        //Debug.Log("Awake"); degub yada yada
+		if (other.gameObject.CompareTag("Enemy")){
+
+			FindObjectOfType<AsteroidGameManager>()?.setGameOver();
+		
+        }
+
+	}
+
+	private void Awake(){
 
     }
 
