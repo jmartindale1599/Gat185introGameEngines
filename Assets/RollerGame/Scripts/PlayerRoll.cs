@@ -6,15 +6,23 @@ using UnityEngine;
 
 public class PlayerRoll : MonoBehaviour{
 
-    [SerializeField] private float maxForce = 8;
+    [SerializeField] private Transform view;
 
-    private Vector3 force;
+    [SerializeField, Range(8, 50)] private float maxForce = 20;
+
+	private int score = 0;
+
+	private Vector3 force;
 
     private Rigidbody rb;
 
     void Start(){
 
         rb = GetComponent<Rigidbody>();
+
+        view = Camera.main.transform;
+
+        Camera.main.GetComponent<RollerCamera>().setTarget(transform);
 
     }
 
@@ -27,7 +35,9 @@ public class PlayerRoll : MonoBehaviour{
 
         direction.z = Input.GetAxis("Vertical");
 
-        force = direction * 7;
+        Quaternion viewSpace = Quaternion.AngleAxis(view.rotation.eulerAngles.y, Vector3.up);
+
+        force = viewSpace * (direction * maxForce);
 
         if (Input.GetButtonDown("Jump")){
 
@@ -41,6 +51,8 @@ public class PlayerRoll : MonoBehaviour{
 
         }
 
+        GameManager.Instance.setHealth(69);
+
     }
 
 	private void FixedUpdate(){
@@ -48,5 +60,13 @@ public class PlayerRoll : MonoBehaviour{
 		rb.AddForce(force);
 
 	}
+
+    public void AddPoints(int points){ 
+    
+        score += points;
+    
+        GameManager.Instance.setScore(score);
+
+    }
 
 }
