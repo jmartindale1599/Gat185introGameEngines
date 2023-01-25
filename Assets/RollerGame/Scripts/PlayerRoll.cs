@@ -8,6 +8,10 @@ public class PlayerRoll : MonoBehaviour{
 
     [SerializeField] private Transform view;
 
+    [SerializeField] private float groundRayLength = 1.8f;
+
+    [SerializeField] private LayerMask groundLayer;
+
     [SerializeField, Range(8, 50)] private float maxForce = 20;
 
 	private int score = 0;
@@ -24,10 +28,16 @@ public class PlayerRoll : MonoBehaviour{
 
         Camera.main.GetComponent<RollerCamera>().setTarget(transform);
 
-    }
+        GetComponent<Health>().onDamage += OnDamage;
 
-    // Update is called once per frame
-    void Update(){
+        GetComponent<Health>().onDeath += OnDeath;
+
+		GameManager.Instance.setHealth((int)GetComponent<Health>().health);
+
+	}
+
+	// Update is called once per frame
+	void Update(){
 
         Vector3 direction = Vector3.zero;
 
@@ -39,7 +49,13 @@ public class PlayerRoll : MonoBehaviour{
 
         force = viewSpace * (direction * maxForce);
 
-        if (Input.GetButtonDown("Jump")){
+		Ray ray = new Ray(transform.position, Vector3.down);
+
+		bool onGround = Physics.Raycast(ray, groundRayLength, groundLayer);
+		
+        Debug.DrawRay(transform.position, ray.direction * groundRayLength);
+
+		if (onGround && Input.GetButtonDown("Jump")){
 
             rb.AddForce(Vector3.up * 7, ForceMode.Impulse);
         
@@ -50,8 +66,6 @@ public class PlayerRoll : MonoBehaviour{
             this.transform.position = Vector3.up;
 
         }
-
-        GameManager.Instance.setHealth(69);
 
     }
 
@@ -67,6 +81,18 @@ public class PlayerRoll : MonoBehaviour{
     
         GameManager.Instance.setScore(score);
 
+    }
+
+    public void OnDamage(){
+
+        GameManager.Instance.setHealth((int)GetComponent<Health>().health);
+        
+    }
+
+    public void OnDeath(){
+
+        GameManager.Instance.setGameOver();
+    
     }
 
 }

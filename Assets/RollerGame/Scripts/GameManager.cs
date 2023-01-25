@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>{
 
     [SerializeField] Transform playerStart;
 
+    [SerializeField] GameObject gameOverUI;
+
     private void Start(){
 
         Instantiate(playerPrefab, playerStart.position, playerStart.rotation);
@@ -29,6 +31,12 @@ public class GameManager : Singleton<GameManager>{
     public void setScore(int score){
 
         scoreUI.text = score.ToString();
+
+    }
+
+    public void setGameOver(){
+
+        gameOverUI.SetActive(true);
 
     }
 

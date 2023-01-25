@@ -15,7 +15,7 @@ public class AsteroidGameManager : MonoBehaviour{
 	
 		score += points;
 
-		scoreUI.text = "Score: " + score;
+		scoreUI.text = "Score:" + score.ToString();
 
 	}
 

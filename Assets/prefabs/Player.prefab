@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5193531248142502078}
   - component: {fileID: 5193531248142502077}
   - component: {fileID: 5193531248142502076}
+  - component: {fileID: 8055771111616918549}
   - component: {fileID: 5193531248142502075}
   m_Layer: 0
   m_Name: Player
@@ -50,6 +51,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 0}
+  groundRayLength: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   maxForce: 50
 --- !u!33 &5193531248142502079
 MeshFilter:
@@ -127,7 +132,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 0}
+  groundRayLength: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   maxForce: 6
+--- !u!114 &8055771111616918549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5193531248142502074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b54e16a9036a648a8b82481d70a154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!54 &5193531248142502075
 Rigidbody:
   m_ObjectHideFlags: 0
