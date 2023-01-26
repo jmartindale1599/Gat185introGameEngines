@@ -32,6 +32,8 @@ public class PlayerRoll : MonoBehaviour{
 
         GetComponent<Health>().onDeath += OnDeath;
 
+        GetComponent<Health>().onHeal += OnHeal;
+
 		GameManager.Instance.setHealth((int)GetComponent<Health>().health);
 
 	}
@@ -89,9 +91,17 @@ public class PlayerRoll : MonoBehaviour{
         
     }
 
+    public void OnHeal(){
+
+        GameManager.Instance.setHealth((int)GetComponent<Health>().health);
+        
+    }
+
     public void OnDeath(){
 
         GameManager.Instance.setGameOver();
+
+        Destroy(gameObject);
     
     }
 
