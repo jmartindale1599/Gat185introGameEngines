@@ -20,6 +20,8 @@ public class PlayerRoll : MonoBehaviour{
 
     private Rigidbody rb;
 
+    public bool gravSwitch = false;
+
     void Start(){
 
         rb = GetComponent<Rigidbody>();
@@ -63,7 +65,17 @@ public class PlayerRoll : MonoBehaviour{
         
         }
 
-        if (Input.GetButtonDown("Fire1")){
+        if (onGround){ //gravSwitch, get the tag, set switch to true, apply Vector3.up on player , else set bool to false
+
+            if (gravSwitch == true){
+
+                rb.AddForce(Vector3.up * 7, ForceMode.Force);
+            
+            }
+        
+        }
+
+        if (Input.GetButtonDown("Fire1")){//respawn button
 
             this.transform.position = Vector3.up;
 
@@ -77,7 +89,7 @@ public class PlayerRoll : MonoBehaviour{
 
 	}
 
-    public void AddPoints(int points){ 
+	public void AddPoints(int points){ 
     
         score += points;
     
