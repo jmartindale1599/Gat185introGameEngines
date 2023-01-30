@@ -62,20 +62,23 @@ public class PlayerRoll : MonoBehaviour{
 		if (onGround && Input.GetButtonDown("Jump")){
 
             rb.AddForce(Vector3.up * 7, ForceMode.Impulse);
-        
+
         }
-
-        if (onGround){ //gravSwitch, get the tag, set switch to true, apply Vector3.up on player , else set bool to false
-
-            if (gravSwitch == true){
-
-                rb.AddForce(Vector3.up * 7, ForceMode.Force);
-            
-            }
         
-        }
+        
+        if(gravSwitch == true && Input.GetButtonDown("Jump")){
 
-        if (Input.GetButtonDown("Fire1")){//respawn button
+			rb.AddForce(Vector3.up * -7, ForceMode.Impulse);
+
+		}
+
+		if (gravSwitch == true){
+
+			rb.AddForce(Vector3.up * 12, ForceMode.Force);
+
+		}
+
+		if (Input.GetButtonDown("Fire1")){//respawn button
 
             this.transform.position = Vector3.up;
 
@@ -115,6 +118,20 @@ public class PlayerRoll : MonoBehaviour{
 
         Destroy(gameObject);
     
+    }
+
+    public void switchGrav(){
+
+        if (gravSwitch == false){
+
+            gravSwitch = true;
+
+        }else{
+
+            gravSwitch = false;
+
+        }
+
     }
 
 }

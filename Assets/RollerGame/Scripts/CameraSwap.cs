@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CollisionEvent))]
-
-public class gravSwitch : Interactable{
+public class CameraSwap : Interactable{
 
 	void Start(){
 
@@ -16,10 +14,10 @@ public class gravSwitch : Interactable{
 
 		if (target.TryGetComponent<PlayerRoll>(out PlayerRoll player)){
 
-			player.switchGrav();
+			player.GetComponent<RollerCamera>().setTarget(player.transform);
 
 		}
-		
+
 	}
 
 }
