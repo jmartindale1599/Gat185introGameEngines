@@ -8,7 +8,7 @@ public class RollerCamera : MonoBehaviour{
 
     [SerializeField, Range(2, 20)] private float distance;
 
-    [SerializeField, Range(20, 90)] private float pitch;
+    [SerializeField, Range(20, 90)] public float pitch;
 
     [SerializeField, Range(0.1f, 5)] private float sensitivity;
 

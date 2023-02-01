@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -21,6 +22,8 @@ public class PlayerRoll : MonoBehaviour{
     private Rigidbody rb;
 
     public bool gravSwitch = false;
+
+    public bool didWin = false;
 
     void Start(){
 
@@ -64,17 +67,10 @@ public class PlayerRoll : MonoBehaviour{
             rb.AddForce(Vector3.up * 7, ForceMode.Impulse);
 
         }
-        
-        
-        if(gravSwitch == true && Input.GetButtonDown("Jump")){
-
-			rb.AddForce(Vector3.up * -7, ForceMode.Impulse);
-
-		}
 
 		if (gravSwitch == true){
 
-			rb.AddForce(Vector3.up * 12, ForceMode.Force);
+			rb.AddForce(Vector3.up * 15, ForceMode.Force);
 
 		}
 
@@ -85,6 +81,28 @@ public class PlayerRoll : MonoBehaviour{
         }
 
     }
+
+	private void LateUpdate(){
+		
+        if(gravSwitch == true && Input.GetButtonDown("Jump")){
+
+			rb.AddForce(Vector3.up * -7, ForceMode.Impulse);
+
+            view.GetComponent<RollerCamera>().pitch = -180.0f;
+
+        }else{
+
+			view.GetComponent<RollerCamera>().pitch = 180.0f;
+
+		}
+
+        if (didWin == true){
+
+            win();
+
+        }
+
+	}
 
 	private void FixedUpdate(){
 
@@ -117,6 +135,16 @@ public class PlayerRoll : MonoBehaviour{
         GameManager.Instance.setGameOver();
 
         Destroy(gameObject);
+    
+    }
+
+    public void win(){
+
+        GameManager.Instance.setGameWon();
+
+        Destroy(gameObject);
+
+        didWin = false;
     
     }
 

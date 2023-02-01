@@ -20,7 +20,9 @@ public class GameManager : Singleton<GameManager>{
 
     [SerializeField] GameObject gameOverUI;
 
-    public enum State{ TITLE, START_GAME, PLAY_GAME, GAME_OVER}
+    [SerializeField] GameObject winUI;
+
+    public enum State{ TITLE, START_GAME, PLAY_GAME, GAME_OVER, WIN}
 
     State state = State.TITLE;
 
@@ -75,6 +77,20 @@ public class GameManager : Singleton<GameManager>{
                 }
             
                 break;
+
+            case State.WIN:
+
+				stateTimer -= Time.deltaTime;
+
+                if(stateTimer <= 0){
+
+                    winUI.SetActive(false);
+
+                    state = State.TITLE;
+                
+                }
+            
+                break;
            
             default:
             
@@ -106,6 +122,16 @@ public class GameManager : Singleton<GameManager>{
 
         stateTimer = 5;
 
+    }
+
+    public void setGameWon(){
+
+        winUI.SetActive(true);
+
+        state = State.WIN;
+
+        stateTimer = 15;
+    
     }
 
     public void onStartGame(){
