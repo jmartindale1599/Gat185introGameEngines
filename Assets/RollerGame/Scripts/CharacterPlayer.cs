@@ -17,6 +17,8 @@ public class CharacterPlayer : MonoBehaviour{
 
 	[SerializeField] private float jumpHeight = 2.5f;
 
+	[SerializeField] private Animator animator;
+
     CharacterController characterController;
 
 	PlayerInputActions playerInput;
@@ -24,6 +26,8 @@ public class CharacterPlayer : MonoBehaviour{
 	Camera mainCamera;
 
 	Vector3 velocity = Vector3.zero;
+
+	float airtime = 0;
 
     public void OnEnable(){
         
@@ -69,13 +73,19 @@ public class CharacterPlayer : MonoBehaviour{
 		
 			velocity.z = direction.z * speed;
 
+			airtime= 0;
+
 			if (playerInput.Player.Jump.triggered){ 
 			
+				animator.SetTrigger("Jump");
+
 				velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
 			
 			}
 
 		}else{
+
+			airtime += Time.deltaTime;
 
 			velocity.y += gravity * Time.deltaTime;
 
@@ -87,7 +97,17 @@ public class CharacterPlayer : MonoBehaviour{
 
 		look.y = 0;
 
-		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), turnRate * Time.deltaTime);
+		if(look.magnitude > 0) { transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), turnRate * Time.deltaTime); }
+
+		//set animator
+
+        animator.SetFloat("Speed", characterController.velocity.magnitude);
+        
+		animator.SetFloat("velY", characterController.velocity.y);
+
+		animator.SetFloat("airtime", airtime);
+
+		animator.SetBool("IsGrounded", characterController.isGrounded);
 
     }
 
@@ -134,6 +154,23 @@ public class CharacterPlayer : MonoBehaviour{
 			Debug.Log("Jump");
 
 		}
+
+	}
+
+	public void onLeftFootSpawn(GameObject go){
+
+		Debug.Log("left");
+		Transform bone = animator.GetBoneTransform(HumanBodyBones.LeftFoot);
+	
+		Instantiate(go, bone.position, bone.rotation);
+
+	}
+
+	public void onRightFootSpawn(GameObject go){
+        Debug.Log("right");
+        Transform bone = animator.GetBoneTransform(HumanBodyBones.RightFoot);
+	
+		Instantiate(go, bone.position, bone.rotation);
 
 	}
 
