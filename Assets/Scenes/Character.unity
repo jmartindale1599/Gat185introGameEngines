@@ -664,6 +664,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: eaf5ae7dd5b502d4381bd6227c2a21dd, type: 2}
     - target: {fileID: 5866666021909216657, guid: 9b6c6678cca201844ad8250d263a6af5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9b6c6678cca201844ad8250d263a6af5, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3f98a54d03020404eadef8c9fc4e8ebd, type: 2}
@@ -785,6 +789,7 @@ GameObject:
   - component: {fileID: 1362862935}
   - component: {fileID: 1362862934}
   - component: {fileID: 1362862936}
+  - component: {fileID: 1362862937}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -907,7 +912,7 @@ MonoBehaviour:
   gravity: -9.8
   turnRate: 4
   jumpHeight: 2.5
-  animator: {fileID: 1543303381}
+  animator: {fileID: 1362862937}
 --- !u!114 &1362862936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +999,26 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &1362862937
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362862929}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9b6c6678cca201844ad8250d263a6af5, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3f98a54d03020404eadef8c9fc4e8ebd, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1458785528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,11 +1136,6 @@ Transform:
 --- !u!4 &1543303380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9b6c6678cca201844ad8250d263a6af5, type: 3}
-  m_PrefabInstance: {fileID: 1095609796}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1543303381 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 9b6c6678cca201844ad8250d263a6af5, type: 3}
   m_PrefabInstance: {fileID: 1095609796}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1570389499

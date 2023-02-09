@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,33 +20,17 @@ public class CharacterPlayer : MonoBehaviour{
 
 	[SerializeField] private Animator animator;
 
+	[SerializeField] private InputRouter inputRouter;
+
     CharacterController characterController;
 
-	PlayerInputActions playerInput;
-
 	Camera mainCamera;
+
+	Vector2 inputAxis;
 
 	Vector3 velocity = Vector3.zero;
 
 	float airtime = 0;
-
-    public void OnEnable(){
-        
-		playerInput.Enable();
-
-    }
-
-    public void Awake(){
-
-		playerInput = new PlayerInputActions();
-
-    }
-
-    public void OnDisable(){
-        
-		playerInput.Disable();
-
-    }
 
     void Start(){
         
@@ -53,17 +38,50 @@ public class CharacterPlayer : MonoBehaviour{
 
 		mainCamera = Camera.main;
 
-    }
+		inputRouter.jumpEvent += OnJump;
 
-    void Update(){
+		inputRouter.moveEvent += OnMove;
+		
+		inputRouter.fireEvent += OnFire;
+		
+		inputRouter.fireStopEvent += OnFireStop;
+
+	}
+
+	public void OnJump(){
+
+		if (characterController.isGrounded == true){
+
+			animator.SetTrigger("Jump");
+
+			velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+
+		}
+
+	}
+
+	public void OnFire(){
+
+	}
+
+	public void OnFireStop(){
+
+	}
+
+
+	public void OnMove(Vector2 axis){
+
+		inputAxis = axis;
+	
+	}
+
+	void Update(){
 
         Vector3 direction = Vector3.zero;
 
-		Vector2 axis = playerInput.Player.Move.ReadValue<Vector2>();
+        direction.x = inputAxis.x;
 
-        direction.x = axis.x;
-
-        direction.z = axis.y;
+        direction.z = inputAxis.y;
 
 		direction = mainCamera.transform.TransformDirection(direction);
 
@@ -73,15 +91,7 @@ public class CharacterPlayer : MonoBehaviour{
 		
 			velocity.z = direction.z * speed;
 
-			airtime= 0;
-
-			if (playerInput.Player.Jump.triggered){ 
-			
-				animator.SetTrigger("Jump");
-
-				velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
-			
-			}
+			airtime = 0;
 
 		}else{
 

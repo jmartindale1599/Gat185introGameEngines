@@ -63,14 +63,14 @@ ModelImporter:
       - time: 0.23690206
         functionName: onLeftFootSpawn
         data: 
-        objectReferenceParameter: {fileID: 5334487221254230987, guid: 8d4270556d821b84cb3fc8f938354328, type: 3}
+        objectReferenceParameter: {fileID: 4939562552224111214, guid: 595388df4a710a3458e7aa3f3e0f6f3f, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.7562644
         functionName: onRightFootSpawn
         data: 
-        objectReferenceParameter: {fileID: 5334487221254230987, guid: 8d4270556d821b84cb3fc8f938354328, type: 3}
+        objectReferenceParameter: {fileID: 4939562552224111214, guid: 595388df4a710a3458e7aa3f3e0f6f3f, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
