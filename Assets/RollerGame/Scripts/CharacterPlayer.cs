@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 
+
 public class CharacterPlayer : MonoBehaviour{
     
+	[SerializeField] private PlayerData playerData;
+	
 	[SerializeField] private Animator animator;
 
 	[SerializeField] private InputRouter inputRouter;
@@ -44,7 +47,7 @@ public class CharacterPlayer : MonoBehaviour{
 
 			animator.SetTrigger("Jump");
 
-			velocity.y = Mathf.Sqrt(jumpHeight * -3 * gravity);
+			velocity.y = Mathf.Sqrt(playerData.jumpHeight * -3 * playerData.gravity);
 
 		}
 
@@ -76,9 +79,9 @@ public class CharacterPlayer : MonoBehaviour{
 
 		if (characterController.isGrounded){ 
 		
-			velocity.x = direction.x * speed;
+			velocity.x = direction.x * playerData.speed;
 		
-			velocity.z = direction.z * speed;
+			velocity.z = direction.z * playerData.speed;
 
 			airtime = 0;
 
@@ -86,7 +89,7 @@ public class CharacterPlayer : MonoBehaviour{
 
 			airtime += Time.deltaTime;
 
-			velocity.y += gravity * Time.deltaTime;
+			velocity.y += playerData.gravity * Time.deltaTime;
 
 		}
 
@@ -96,7 +99,7 @@ public class CharacterPlayer : MonoBehaviour{
 
 		look.y = 0;
 
-		if(look.magnitude > 0) { transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), turnRate * Time.deltaTime); }
+		if(look.magnitude > 0) { transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), playerData.turnRate * Time.deltaTime); }
 
 		//set animator
 
@@ -142,7 +145,7 @@ public class CharacterPlayer : MonoBehaviour{
 
 		// Apply the push
 		
-		body.velocity = pushDir * hitForce;
+		body.velocity = pushDir * playerData.hitForce;
 
 	}
 
@@ -159,6 +162,7 @@ public class CharacterPlayer : MonoBehaviour{
 	public void onLeftFootSpawn(GameObject go){
 
 		Debug.Log("left");
+
 		Transform bone = animator.GetBoneTransform(HumanBodyBones.LeftFoot);
 	
 		Instantiate(go, bone.position, bone.rotation);
@@ -166,8 +170,10 @@ public class CharacterPlayer : MonoBehaviour{
 	}
 
 	public void onRightFootSpawn(GameObject go){
-        Debug.Log("right");
-        Transform bone = animator.GetBoneTransform(HumanBodyBones.RightFoot);
+        
+		Debug.Log("right");
+        
+		Transform bone = animator.GetBoneTransform(HumanBodyBones.RightFoot);
 	
 		Instantiate(go, bone.position, bone.rotation);
 

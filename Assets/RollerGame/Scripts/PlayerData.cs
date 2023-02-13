@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "PlayerData", menuName = "Game/PlayerData")]
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class PlayerData : ScriptableObject{
+
+    [SerializeField] public float speed = 3;
+
+    [SerializeField] public float hitForce = 2;
+
+    [SerializeField] public float gravity = Physics.gravity.y;
+
+    [SerializeField] public float turnRate = 10;
+
+    [SerializeField] public float jumpHeight = 2.5f;
+
 }
