@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdaecb9e1b65b264281fa2ee44edd640, type: 3}
   m_Name: AudioMixerController
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 970acd7c0afd3904d99f32410e749854, type: 2}
   volumeMaster: 1
   volumeSFX: 1
   volumeMusic: 1

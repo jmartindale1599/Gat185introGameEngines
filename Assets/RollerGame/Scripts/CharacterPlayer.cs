@@ -7,17 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 
 public class CharacterPlayer : MonoBehaviour{
-
-    [SerializeField] private float speed = 3;
-
-    [SerializeField] private float hitForce = 2;
-
-	[SerializeField] private float gravity = Physics.gravity.y;
-
-	[SerializeField] private float turnRate = 10;
-
-	[SerializeField] private float jumpHeight = 2.5f;
-
+    
 	[SerializeField] private Animator animator;
 
 	[SerializeField] private InputRouter inputRouter;
@@ -67,7 +57,6 @@ public class CharacterPlayer : MonoBehaviour{
 	public void OnFireStop(){
 
 	}
-
 
 	public void OnMove(Vector2 axis){
 
