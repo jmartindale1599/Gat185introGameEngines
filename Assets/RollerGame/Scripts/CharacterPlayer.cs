@@ -55,6 +55,8 @@ public class CharacterPlayer : MonoBehaviour{
 
 	public void OnFire(){
 
+		animator.SetTrigger("attack");
+
 	}
 
 	public void OnFireStop(){

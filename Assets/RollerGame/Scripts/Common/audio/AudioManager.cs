@@ -29,6 +29,7 @@ public class AudioManager : Singleton<AudioManager>
 			}
 		}
 
+		
 		// could not get available audio source controller
 		// create new audio source controller
 		switch (type)
@@ -40,6 +41,8 @@ public class AudioManager : Singleton<AudioManager>
 			default:
 				return null;
 		}
+
+		return null;
 	}
 
 	public void ReturnController(AudioSourceController controller)

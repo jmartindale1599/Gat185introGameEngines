@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580f4596d471a7d4d86da2a370a9cf98, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   hitForce: 2
   gravity: -9.81
   turnRate: 10
