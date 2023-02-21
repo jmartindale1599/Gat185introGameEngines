@@ -39,8 +39,8 @@ ModelImporter:
       name: Dancing Running Man
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
-      lastFrame: 270
+      firstFrame: 37
+      lastFrame: 162
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
