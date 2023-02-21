@@ -5,7 +5,10 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
+
 public class EnemyCharacter : MonoBehaviour{
+
+    [SerializeField] Animator animator;
 
     private NavMeshAgent navMeshAgent;
 
@@ -27,17 +30,7 @@ public class EnemyCharacter : MonoBehaviour{
 
         navMeshAgent.SetDestination(target.position);
 
-        /*if (Input.GetMouseButtonDown(0)){ 
-        
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if(Physics.Raycast(ray, out RaycastHit hit)){ 
-            
-                navMeshAgent.SetDestination(hit.point);
-            
-            }
-        
-        }*/
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
     }
 

@@ -15,6 +15,8 @@ public class CharacterPlayer : MonoBehaviour{
 
 	[SerializeField] private InputRouter inputRouter;
 
+	[SerializeField] private Weapon weapon;
+
     CharacterController characterController;
 
 	Camera mainCamera;
@@ -57,9 +59,13 @@ public class CharacterPlayer : MonoBehaviour{
 
 		animator.SetTrigger("attack");
 
+		weapon.Use();
+
 	}
 
 	public void OnFireStop(){
+
+		weapon.StopUse();
 
 	}
 
@@ -115,7 +121,14 @@ public class CharacterPlayer : MonoBehaviour{
 
     }
 
-	void OnControllerColliderHit(ControllerColliderHit hit){
+    public void OnAnimEventItemUse(){
+
+        // create ammo prefab
+        weapon.OnAnimEventItemUse();
+    
+	}
+
+    void OnControllerColliderHit(ControllerColliderHit hit){
 
 		Rigidbody body = hit.collider.attachedRigidbody;
 
