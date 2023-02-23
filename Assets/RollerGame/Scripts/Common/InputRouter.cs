@@ -11,6 +11,7 @@ public class InputRouter : ScriptableObject, PlayerInputActions.IPlayerActions
 	public UnityAction fireStopEvent;
 	public UnityAction jumpEvent;
 	public UnityAction jumpStopEvent;
+	public UnityAction swapItemEvent;
 	public UnityAction<Vector2> moveEvent;
 
 	private PlayerInputActions inputActions;
@@ -65,4 +66,15 @@ public class InputRouter : ScriptableObject, PlayerInputActions.IPlayerActions
 				break;
 		}
 	}
+
+	public void OnSwapItem(InputAction.CallbackContext context){
+
+		if(context.phase == InputActionPhase.Performed){
+
+			swapItemEvent?.Invoke();
+		
+		}
+
+	}
+
 }

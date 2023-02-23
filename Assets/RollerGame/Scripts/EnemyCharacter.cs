@@ -24,9 +24,27 @@ public class EnemyCharacter : MonoBehaviour{
 
         navMeshAgent= GetComponent<NavMeshAgent>();
 
-    }
+		GetComponent<Health>().onDeath += OnDeath;
 
-    void Update(){
+	}
+
+	void OnDeath(){
+
+		StartCoroutine(Death());
+
+	}
+
+	IEnumerator Death(){
+
+		animator.SetTrigger("Death");
+
+		yield return new WaitForSeconds(4.0f);
+
+		Destroy(gameObject);
+
+	}
+
+	void Update(){
 
         navMeshAgent.SetDestination(target.position);
 

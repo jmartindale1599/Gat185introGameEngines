@@ -15,7 +15,7 @@ public class CharacterPlayer : MonoBehaviour{
 
 	[SerializeField] private InputRouter inputRouter;
 
-	[SerializeField] private Weapon weapon;
+	[SerializeField] private Inventory inventory;
 
     CharacterController characterController;
 
@@ -41,6 +41,8 @@ public class CharacterPlayer : MonoBehaviour{
 		
 		inputRouter.fireStopEvent += OnFireStop;
 
+		inputRouter.swapItemEvent += OnSwapItem;
+
 	}
 
 	public void OnJump(){
@@ -59,14 +61,20 @@ public class CharacterPlayer : MonoBehaviour{
 
 		animator.SetTrigger("attack");
 
-		weapon.Use();
+		inventory.Use();
 
 	}
 
 	public void OnFireStop(){
 
-		weapon.StopUse();
+		inventory.StopUse();
 
+	}
+
+	public void OnSwapItem(){
+
+		inventory.EquipNextItem();
+	
 	}
 
 	public void OnMove(Vector2 axis){
@@ -124,7 +132,8 @@ public class CharacterPlayer : MonoBehaviour{
     public void OnAnimEventItemUse(){
 
         // create ammo prefab
-        weapon.OnAnimEventItemUse();
+
+        inventory.OnAnimEventItemUse();
     
 	}
 
