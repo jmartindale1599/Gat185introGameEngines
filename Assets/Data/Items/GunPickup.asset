@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ef84ad5981491438b44e84fc31d4a3, type: 3}
-  m_Name: GunWeapon
+  m_Script: {fileID: 11500000, guid: 7c821ab2c17be1348bd61606a17f74af, type: 3}
+  m_Name: GunPickup
   m_EditorClassIdentifier: 
-  id: 
+  id: GunPickup
   description: 
   icon: {fileID: 0}
   allowMultiple: 0
@@ -20,9 +20,6 @@ MonoBehaviour:
   itemType: 0
   usageType: 0
   animTriggerName: 
+  animEquipName: 
   itemPrefab: {fileID: 0}
   pickupPrefab: {fileID: 0}
-  fireRate: 0
-  spread: {x: 0.1, y: 0.1, z: 0.1}
-  rounds: 0
-  ammoPrefab: {fileID: 0}
