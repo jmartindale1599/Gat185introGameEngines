@@ -16,6 +16,12 @@ public class EnemyCharacter : MonoBehaviour{
 
     private Transform target;
 
+	private State state = State.IDLE;
+
+	private float timer = 0;
+
+	enum State { IDLE, PATROL, CHASE, ATTACK, DEATH }
+
     private void Start(){
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -46,7 +52,47 @@ public class EnemyCharacter : MonoBehaviour{
 
 	void Update(){
 
-        navMeshAgent.SetDestination(target.position);
+		switch (state){
+
+			case State.IDLE:
+
+				state = State.PATROL;
+
+				break;
+			
+			case State.PATROL:
+
+				navMeshAgent.isStopped = false;
+			
+				target = GetComponent<WaypointNavigator>().waypoint.transform;
+
+				break;
+			
+			case State.CHASE:
+
+				navMeshAgent.isStopped = false;
+
+				break;
+			
+			case State.ATTACK:
+
+				navMeshAgent.isStopped = true;
+			
+				break;
+			
+			case State.DEATH:
+
+				navMeshAgent.isStopped = true;
+			
+				break;
+			
+			default:
+			
+				break;
+		
+		}
+
+		navMeshAgent.SetDestination(target.position);
 
         animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
