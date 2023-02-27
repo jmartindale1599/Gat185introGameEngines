@@ -59,8 +59,6 @@ public class CharacterPlayer : MonoBehaviour{
 
 	public void OnFire(){
 
-		animator.SetTrigger("attack");
-
 		inventory.Use();
 
 	}

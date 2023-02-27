@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - gravSwitch
+  - Waypoint
   layers:
   - Default
   - TransparentFX
