@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultInventory
   m_EditorClassIdentifier: 
   items:
-  - itemData: {fileID: 11400000, guid: 844fecb500d6d544fb357230347c55c2, type: 2}
-    count: 0
   - itemData: {fileID: 11400000, guid: be215214d98277341bf376409da9ef26, type: 2}
+    count: 0
+  - itemData: {fileID: 11400000, guid: 844fecb500d6d544fb357230347c55c2, type: 2}
     count: 0

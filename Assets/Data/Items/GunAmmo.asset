@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b36fc6360c32b04c851e61c22af4f4e, type: 3}
   m_Name: GunAmmo
   m_EditorClassIdentifier: 
-  ammoType: 0
+  ammoType: 1
   lifetime: 3
   damage: 47
   destroyOnImpact: 1
   impactPrefab: {fileID: 4113684180137019041, guid: 3d8c1a70547228948927f561543581d1, type: 3}
   force: 35
-  forceMode: 0
+  forceMode: 2
   damageOverTime: 0
   bounce: 0
   rotateToVelocity: 1
