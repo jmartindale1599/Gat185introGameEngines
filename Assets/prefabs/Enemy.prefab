@@ -1231,6 +1231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2410303230493255728}
   sensor: {fileID: 7313365489628127251}
+  attackTransform: {fileID: 5788893168993694179}
+  damage: 45
 --- !u!114 &2410303230493255729
 MonoBehaviour:
   m_ObjectHideFlags: 0

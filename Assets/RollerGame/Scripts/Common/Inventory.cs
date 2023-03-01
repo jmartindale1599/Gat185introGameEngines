@@ -86,6 +86,12 @@ public class Inventory : MonoBehaviour
 		return items.FirstOrDefault(item => item.GetData() == itemData);
 	}
 
+	public bool Contains(ItemData itemData){
+
+		return inventoryData.Contains(itemData);
+
+	}
+
 	public void Use()
 	{
 		if (currentItem == null) return;

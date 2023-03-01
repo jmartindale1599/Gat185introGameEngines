@@ -13,6 +13,10 @@ public class EnemyCharacter : MonoBehaviour{
 
 	[SerializeField] Sensor sensor;
 
+	[SerializeField] Transform attackTransform;
+
+	[SerializeField] float damage;
+
     private NavMeshAgent navMeshAgent;
 
     private Camera mainCamera;
@@ -64,6 +68,30 @@ public class EnemyCharacter : MonoBehaviour{
 		yield return new WaitForSeconds(4.0f);
 
 		Destroy(gameObject);
+
+	}
+
+	void OnAnimAttack(){
+
+		Debug.Log("attack");
+
+		var colliders = Physics.OverlapSphere(attackTransform.position, 2);
+		
+		foreach (var collider in colliders){
+
+			if (collider.gameObject.CompareTag("Player")){
+
+				if (collider.gameObject.TryGetComponent<Health>(out Health health)){
+
+					health.OnApplyDamage(damage);
+					
+					break;
+				
+				}
+
+			}
+
+		}
 
 	}
 

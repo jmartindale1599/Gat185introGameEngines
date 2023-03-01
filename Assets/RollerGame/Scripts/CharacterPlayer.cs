@@ -43,6 +43,14 @@ public class CharacterPlayer : MonoBehaviour{
 
 		inputRouter.swapItemEvent += OnSwapItem;
 
+		GetComponent<Health>().onDeath += OnDeath;
+
+	}
+
+	public void OnDeath(){ 
+	
+		Debug.Log("Ded");
+	
 	}
 
 	public void OnJump(){
