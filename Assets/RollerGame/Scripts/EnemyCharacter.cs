@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,8 @@ using UnityEngine.AI;
 public class EnemyCharacter : MonoBehaviour{
 
     [SerializeField] Animator animator;
+
+	[SerializeField] Sensor sensor;
 
     private NavMeshAgent navMeshAgent;
 
@@ -34,6 +37,18 @@ public class EnemyCharacter : MonoBehaviour{
 
 	}
 
+	IEnumerator Attack() { 
+		
+		state = State.ATTACK; 
+		
+		animator.SetTrigger("Attack"); 
+		
+		yield return new WaitForSeconds(4.0f);
+		
+		state = State.CHASE; 
+	
+	}
+
 	void OnDeath(){
 
 		StartCoroutine(Death());
@@ -41,6 +56,8 @@ public class EnemyCharacter : MonoBehaviour{
 	}
 
 	IEnumerator Death(){
+
+		state = State.DEATH;
 
 		animator.SetTrigger("Death");
 
@@ -66,11 +83,35 @@ public class EnemyCharacter : MonoBehaviour{
 			
 				target = GetComponent<WaypointNavigator>().waypoint.transform;
 
+				if (sensor.sensed != null) { 
+					
+					state = State.CHASE; 
+				
+				}
+
 				break;
 			
 			case State.CHASE:
 
 				navMeshAgent.isStopped = false;
+
+				if (sensor.sensed != null) { 
+					
+					target = sensor.sensed.transform; 
+					
+					float distance = Vector3.Distance(target.position, transform.position); 
+					
+					if (distance <= 2) { 
+						
+						StartCoroutine(Attack()); 
+					
+					} 
+					
+					timer = 2; 
+				
+				}
+
+				timer -= Time.deltaTime; if (timer <= 0) { state = State.PATROL; }
 
 				break;
 			

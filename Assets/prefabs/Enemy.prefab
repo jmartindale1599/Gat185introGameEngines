@@ -546,6 +546,37 @@ Transform:
   m_Father: {fileID: 8552389575752521665}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1574117088888974544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2233427585249641149}
+  m_Layer: 0
+  m_Name: Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2233427585249641149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574117088888974544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.609, z: 0.666}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2410303230493255743}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609356397545704537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1106,7 @@ GameObject:
   - component: {fileID: 2410303230493255728}
   - component: {fileID: 792697545795313885}
   - component: {fileID: 7028398657719070593}
+  - component: {fileID: 7313365489628127251}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1095,6 +1127,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2808459983075758254}
+  - {fileID: 2233427585249641149}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1197,6 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2410303230493255728}
+  sensor: {fileID: 7313365489628127251}
 --- !u!114 &2410303230493255729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,6 +1292,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7313365489628127251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410303230493255737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae64a1bd945450645bac2bd1b44a4ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 2233427585249641149}
+  tagetTag: Player
+  distance: 10
+  senseRate: 0.25
 --- !u!1 &2552481606430717187
 GameObject:
   m_ObjectHideFlags: 0
