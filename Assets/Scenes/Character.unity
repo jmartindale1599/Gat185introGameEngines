@@ -539,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactFX: {fileID: 0}
   destroyOnInteract: 0
+  condition: {fileID: 0}
   animator: {fileID: 64390202615667581}
   parameter: Activate
 --- !u!114 &668787950
@@ -894,6 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 0}
   animator: {fileID: 0}
+  rigBuilder: {fileID: 0}
   ammoTransform: {fileID: 0}
 --- !u!1 &996339035
 GameObject:
@@ -1259,6 +1261,7 @@ GameObject:
   - component: {fileID: 1362862939}
   - component: {fileID: 1362862941}
   - component: {fileID: 1362862940}
+  - component: {fileID: 1362862942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1530,6 +1533,19 @@ MonoBehaviour:
   - m_Rig: {fileID: 1948811445}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &1362862942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362862929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b54e16a9036a648a8b82481d70a154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!4 &1422791440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3210758358069223581, guid: 6864f2c05403f874988ea1d33826528c, type: 3}
@@ -2513,6 +2529,7 @@ GameObject:
   - component: {fileID: 64390202615667581}
   - component: {fileID: 64390202615667583}
   - component: {fileID: 64390202615667582}
+  - component: {fileID: 64390202615667584}
   m_Layer: 0
   m_Name: actual door
   m_TagString: Untagged
@@ -2786,6 +2803,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 64390202615667582}
+--- !u!114 &64390202615667584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024562840777580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef266bef091b5c0458d48a9bccefabaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: b3bab638c94b948468d87b01da851ea5, type: 2}
 --- !u!1 &152878827819036546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3126,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652646361647}
-  - component: {fileID: 5866666020815310933}
   m_Layer: 0
   m_Name: Y Bot
   m_TagString: Untagged
@@ -5092,7 +5121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 844fecb500d6d544fb357230347c55c2, type: 2}
-  animator: {fileID: 5866666020815310933}
+  animator: {fileID: 1362862937}
+  rigBuilder: {fileID: 1362862941}
   ammoTransform: {fileID: 2940516143268562446}
 --- !u!4 &5606473443547786063
 Transform:
@@ -5337,26 +5367,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000036746264, y: -0.13112509, z: 0.011433661}
     m_Extent: {x: 0.973426, y: 0.93783796, z: 0.19394961}
   m_DirtyAABB: 0
---- !u!95 &5866666020815310933
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148101845141}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: 9b6c6678cca201844ad8250d263a6af5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f98a54d03020404eadef8c9fc4e8ebd, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &5901452234175404204
 Transform:
   m_ObjectHideFlags: 0
@@ -6029,6 +6039,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1362862937}
+    - target: {fileID: -2013105794619006449, guid: 6864f2c05403f874988ea1d33826528c, type: 3}
+      propertyPath: rigBuilder
+      value: 
+      objectReference: {fileID: 1362862941}
     - target: {fileID: 3210758358069223580, guid: 6864f2c05403f874988ea1d33826528c, type: 3}
       propertyPath: m_Name
       value: GunWeapon
